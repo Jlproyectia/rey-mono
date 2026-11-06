@@ -1,0 +1,8 @@
+**/node_modules/
+**/.git/
+**/.vercel/
+**/.openai/
+**/.site-workflow/
+**/.env
+**/.env.*
+!**/.env.example

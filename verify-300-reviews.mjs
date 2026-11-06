@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const root=new URL('./rey-mono/',import.meta.url);
+const data=JSON.parse(readFileSync(new URL('google-reviews.json',root),'utf8'));
+const html=readFileSync(new URL('dist/index.html',root),'utf8');
+const sectionStart=html.indexOf('<section class="reviews-section');
+const section=html.slice(sectionStart,html.indexOf('</section>',sectionStart));
+assert.equal(data.reviews.length,300);
+assert.equal(new Set(data.reviews.map(r=>r.id)).size,300);
+assert(data.reviews.every(r=>r.rating===5&&r.text&&r.profile.startsWith('https://www.google.com/maps/contrib/')));
+assert.equal((section.match(/data-rating="5"/g)||[]).length,300);
+assert.equal((section.match(/<article[^>]+ hidden/g)||[]).length,298);
+assert(!/<img|<picture|<time|verification|Consultado|noviembre|data-rating="4"/.test(section));
+assert(data.reviews.every(r=>r.text.split(/\s+/).length<=18));
+assert.equal(data.order,'Google Maps: newest first');
+console.log('PASS: 300 unique five-star reviews, newest-first source order, 300 profile links, 2 initial cards, no review images or dates.');

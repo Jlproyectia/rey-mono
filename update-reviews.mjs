@@ -1,0 +1,9 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+const file='rey-mono/dist/index.html';
+let html=readFileSync(file,'utf8');
+const start=html.indexOf('<div class="review-list">');
+const end=html.indexOf('<p class="review-disclosure">',start);
+if(start<0||end<0)throw new Error('Review boundaries not found');
+html=html.slice(0,start)+`<div class="review-browser"><div class="review-browser-heading"><h3>Opiniones de 3 y 4 estrellas</h3><span>2 reseñas verificadas</span></div><p id="review-scroll-help">Desliza hacia abajo para leer la selección.</p><div class="review-list" role="region" aria-label="Reseñas de 3 y 4 estrellas" aria-describedby="review-scroll-help" tabindex="0"><article class="review glass" data-rating="4"><div class="review-top"><span>Ali</span><span class="stars" aria-label="4 estrellas">★★★★<span class="empty-star">★</span></span></div><p>Disfrutó la comida, aunque habría preferido el arroz frito más crujiente.</p><small>Resumen de su reseña</small><a class="maps-link" target="_blank" rel="noopener">Leer opiniones en Google ↗</a></article><article class="review glass" data-rating="3"><div class="review-top"><span>Agusy a</span><span class="stars" aria-label="3 estrellas">★★★<span class="empty-star">★★</span></span></div><p>Consideró la comida y el servicio normales. Le parecieron pequeña la sopa de wonton y aceitosos los noodles; valoró que hubiera tofu y seitán.</p><small>Resumen de su reseña</small><a class="maps-link" target="_blank" rel="noopener">Leer opiniones en Google ↗</a></article></div></div></div>`+html.slice(end);
+html=html.replace('Selección de opiniones de 4 y 5 estrellas. La valoración y el total incluyen todas las reseñas de Google.','Selección de reseñas verificadas de 3 y 4 estrellas. La lista no contiene todas las opiniones de Google. La valoración y el total general incluyen todas las estrellas.');
+writeFileSync(file,html);
