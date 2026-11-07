@@ -39,3 +39,34 @@
 .review-top .stars{flex-shrink:0}
 .review-source .ui-icon{margin-left:4px}
 @media(max-width:760px){.review-list{height:460px;max-height:65vh}.review-list .review{padding:22px}.review-list .review blockquote{font-size:17px}}
+
+/* Dedicated menu and transparent dish photography. */
+@media(min-width:761px){.dish-stage{height:auto;min-height:660px;display:grid;grid-template-columns:1.4fr 1fr;align-items:center;gap:4%;padding:80px 6%;perspective:none}.dish-image{position:relative;inset:auto;width:100%;transform:none}.dish-note{position:relative;inset:auto;width:100%;max-width:390px;justify-self:end}.dish-watermark{top:0}.dish-caption{bottom:28px}}
+.carta-page .menu-section{padding-top:170px;min-height:80dvh}
+.menu-title{font:clamp(62px,7.5vw,116px)/.99 Bebas;letter-spacing:-.01em}
+.menu-title span{color:var(--red)}
+.nav a[aria-current=page]{color:var(--red)}
+.dish-image img,.wok-title img{mix-blend-mode:normal;object-fit:contain;height:auto}
+.wok-preview{margin:24px 0 0;position:relative;min-height:150px}
+.wok-preview img{width:100%;height:auto;aspect-ratio:3/2;margin:0;transition:opacity .2s}
+.wok-preview[aria-busy=true] img{opacity:.35}
+#wok-image-status{font-size:11px;color:var(--muted);min-height:20px;margin-top:12px}
+@media(max-width:760px){
+ .hero{min-height:max(880px,100dvh)}
+ .hero-picture{inset:0}
+ .hero-picture img{object-fit:cover;object-position:center bottom}
+ .hero-copy{padding-top:130px}
+ .hero-shade{background:linear-gradient(180deg,#09090938 0%,transparent 48%,transparent 80%,#090909 100%)}
+ .hero-copy>p:not(.eyebrow){color:#e0dcd8}
+ .dish-stage{height:auto;min-height:0;padding:50px 6% 30px;display:flex;flex-direction:column;gap:24px;perspective:none}
+ .dish-watermark{font-size:65vw;left:7%;top:0}
+ .dish-image{position:relative;inset:auto;width:114%;margin-left:-7%;transform:none;z-index:1}
+ .dish-note{position:relative;inset:auto;width:100%;padding:28px;background:#151515;backdrop-filter:none}
+ .dish-note h2{font-size:62px}
+ .dish-caption{position:relative;inset:auto;font-size:8px;flex-wrap:wrap}
+ .wok-preview{margin:24px -4% 0}
+ .wok-builder{padding:24px;min-width:0}
+ .wok-builder select{font-size:16px;padding-right:28px}
+ .carta-page .menu-section{padding-top:130px}
+ .menu-title{font-size:clamp(53px,12vw,88px)}
+}
