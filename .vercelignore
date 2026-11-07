@@ -1,0 +1,14 @@
+.git
+**/.git
+**/node_modules
+**/.openai
+**/.site-workflow
+**/.env
+**/.env.*
+package-stage
+reviews-package
+reviews-release
+*.tar.gz
+*.jpg
+*.mjs
+rey-mono/sources
